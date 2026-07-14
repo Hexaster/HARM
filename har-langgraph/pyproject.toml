@@ -1,0 +1,25 @@
+[project]
+name = "har-langgraph"
+version = "0.1.0"
+description = "Hierarchical Agent Reflection (HAR) reimplemented as a LangGraph pipeline"
+requires-python = ">=3.11"
+dependencies = [
+    "langgraph>=0.2",
+    "langchain-openai",
+    "openai",
+    "pydantic>=2",
+    "python-dotenv",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "mypy",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["har*"]

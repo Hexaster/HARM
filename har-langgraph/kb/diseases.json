@@ -1,0 +1,138 @@
+{
+  "stress incontinence": {
+    "key_inquiry_points": [
+      "Involuntary leakage synchronous with coughing, sneezing, laughing, or physical exertion, with no preceding urge.",
+      "Common after vaginal delivery, pelvic surgery, or in postmenopausal women; assess for pelvic floor weakness.",
+      "Positive cough stress test with a full bladder; leakage stops immediately when the provocation stops.",
+      "No significant urgency, frequency, or nocturia unless a mixed picture is present."
+    ]
+  },
+  "urge incontinence": {
+    "key_inquiry_points": [
+      "Sudden, compelling urge to void immediately followed by involuntary leakage, often before reaching the toilet.",
+      "Associated with urgency, frequency, and nocturia (overlaps with overactive bladder, but leakage volume is typically larger).",
+      "Not triggered by coughing, sneezing, or exertion alone; the urge precedes the leak.",
+      "May respond to antimuscarinics or beta-3 agonists (e.g., Mirabegron); rule out a urinary tract infection as a precipitant."
+    ]
+  },
+  "overflow incontinence": {
+    "key_inquiry_points": [
+      "Continuous or frequent dribbling from an overdistended bladder, often with a sensation of incomplete emptying.",
+      "Usually secondary to bladder outlet obstruction (e.g., prostatic hyperplasia, urethral stricture) or an underactive/neurogenic detrusor.",
+      "Elevated post-void residual on bladder scan is the key distinguishing test.",
+      "Weak or intermittent stream and straining to void are common accompanying symptoms."
+    ]
+  },
+  "overactive bladder": {
+    "key_inquiry_points": [
+      "Urgency, usually with frequency and nocturia, with or without urgency incontinence, in the absence of infection or other clear pathology.",
+      "A symptom complex rather than a single mechanism; diagnosis of exclusion after ruling out infection, stones, and malignancy.",
+      "Improvement with antimuscarinics or beta-3 agonists (e.g., Mirabegron) supports the diagnosis.",
+      "No leakage specifically tied to coughing or sneezing, which helps distinguish it from pure stress incontinence."
+    ]
+  },
+  "lower urinary tract syndrome": {
+    "key_inquiry_points": [
+      "Umbrella term covering storage symptoms (urgency, frequency, nocturia), voiding symptoms (weak stream, hesitancy, straining), and post-micturition symptoms (dribbling, incomplete emptying).",
+      "In men, frequently secondary to bladder outlet obstruction from prostatic hyperplasia; in women, often overlaps with overactive bladder or pelvic floor dysfunction.",
+      "A mixed symptom picture, both storage and voiding complaints together, favors this diagnosis over a single-mechanism condition.",
+      "Uroflowmetry and post-void residual help separate storage-predominant from voiding-predominant presentations."
+    ]
+  },
+  "carcinoma of prostate": {
+    "key_inquiry_points": [
+      "Often asymptomatic early; may present with lower urinary tract symptoms, hematuria, or bone pain in advanced/metastatic disease.",
+      "Elevated or rapidly rising PSA; irregular, hard, or nodular prostate on digital rectal examination.",
+      "Distinguish from benign hyperplasia: hyperplasia typically has a smooth, symmetrically enlarged prostate and a PSA rise proportional to gland size.",
+      "Confirmed by prostate biopsy or MRI-targeted biopsy, not by symptoms alone."
+    ]
+  },
+  "hyperplasia of prostate": {
+    "key_inquiry_points": [
+      "Progressive voiding symptoms (weak stream, hesitancy, straining, incomplete emptying) in men typically over 50 years old.",
+      "Smooth, symmetrically enlarged prostate on digital rectal examination; PSA may be mildly elevated proportional to gland volume.",
+      "No hematuria, irregular or nodular gland, or rapid PSA rise, which would instead suggest prostate carcinoma.",
+      "Symptoms often improve with alpha-blockers or 5-alpha-reductase inhibitors, supporting a benign obstructive process."
+    ]
+  },
+  "contracture of bladder neck": {
+    "key_inquiry_points": [
+      "Voiding symptoms similar to prostatic hyperplasia but typically occurring after prior prostate or bladder neck surgery (e.g., TURP) or chronic inflammation.",
+      "Cystoscopy shows a narrowed, fibrotic bladder neck without significant prostatic enlargement.",
+      "History of pelvic or prostate surgery or radiation is a strong differentiating clue versus de novo hyperplasia.",
+      "Uroflow shows an obstructive pattern despite a small or previously resected prostate."
+    ]
+  },
+  "urethral stricture": {
+    "key_inquiry_points": [
+      "Progressive weak, split, or spraying urinary stream with straining, often with a history of urethritis, instrumentation, catheterization, or trauma.",
+      "Point tenderness or a palpable fibrotic segment along the urethra in some cases.",
+      "Retrograde urethrogram or cystoscopy demonstrates a discrete narrowed segment, distinguishing it from diffuse bladder outlet pathology like prostatic hyperplasia.",
+      "Post-void residual elevated; recurrent urinary tract infections may occur from stasis proximal to the stricture."
+    ]
+  },
+  "neurogenic bladder": {
+    "key_inquiry_points": [
+      "Voiding dysfunction (retention, overflow incontinence, or urge incontinence) occurring alongside a known neurological condition (spinal cord injury, diabetes, multiple sclerosis, stroke).",
+      "Loss of normal bladder sensation or coordination between the detrusor and sphincter (detrusor-sphincter dyssynergia) on urodynamics.",
+      "Absence of a structural outlet lesion (stricture, hyperplasia) on imaging or cystoscopy; the deficit is functional or neurological, not mechanical.",
+      "Saddle anesthesia, altered perineal sensation, or other neurological deficits support this diagnosis."
+    ]
+  },
+  "carcinoma of bladder": {
+    "key_inquiry_points": [
+      "Painless gross or microscopic hematuria is the hallmark presenting symptom, often intermittent.",
+      "Irritative voiding symptoms (urgency, frequency, dysuria) can occur, especially with carcinoma in situ, mimicking cystitis.",
+      "Risk factors: smoking, occupational aromatic amine exposure, chronic cystitis or schistosomiasis, age over 50.",
+      "Cystoscopy with biopsy is diagnostic; imaging and cytology support but do not replace direct visualization."
+    ]
+  },
+  "vesical calculus": {
+    "key_inquiry_points": [
+      "Suprapubic or perineal pain that worsens with movement or at the end of micturition, sometimes with interruption of the urinary stream (positional voiding).",
+      "Hematuria (often terminal) and irritative voiding symptoms are common; may coexist with bladder outlet obstruction (e.g., prostatic hyperplasia) as a predisposing cause.",
+      "Plain X-ray, ultrasound, or CT demonstrates a radio-opaque or echogenic stone within the bladder.",
+      "Distinguish from bladder carcinoma by imaging (calcified, mobile stone versus a fixed soft-tissue mass) and cystoscopy."
+    ]
+  },
+  "urinary tract infection": {
+    "key_inquiry_points": [
+      "Acute dysuria, frequency, urgency, and suprapubic discomfort, sometimes with hematuria; fever or flank pain suggest upper tract (pyelonephritis) involvement.",
+      "Positive urinalysis (leukocyte esterase, nitrites, pyuria) and a positive urine culture confirm the diagnosis.",
+      "Symptoms are typically acute in onset, unlike the chronic, progressive course of obstructive or malignant lower urinary tract symptoms.",
+      "Resolution of symptoms after appropriate antibiotics supports the diagnosis and helps exclude a structural or neoplastic cause."
+    ]
+  },
+  "cystitis": {
+    "key_inquiry_points": [
+      "Suprapubic pain or pressure, dysuria, urgency, and frequency, without significant flank pain or fever, which would suggest pyelonephritis.",
+      "Pyuria and bacteriuria on urinalysis or culture in bacterial cystitis; sterile pyuria may suggest interstitial cystitis or another cause.",
+      "Consider vesical calculus or a bladder tumor as an underlying cause if cystitis is recurrent or refractory to treatment.",
+      "Symptom overlap with urethritis: cystitis typically has more suprapubic and urgency symptoms, while urethritis is more discharge and urethral-pain predominant."
+    ]
+  },
+  "vaginitis": {
+    "key_inquiry_points": [
+      "Vaginal discharge, odor, itching, or irritation, sometimes with external dysuria (pain as urine passes over inflamed labia rather than true internal dysuria).",
+      "Wet mount, vaginal pH, and culture identify the causative organism (e.g., bacterial vaginosis, candidiasis, trichomoniasis).",
+      "Absence of true urinary frequency or urgency and a negative urine culture help distinguish it from a primary urinary tract infection.",
+      "A relevant differential in women presenting with 'dysuria' where urinalysis is unremarkable."
+    ]
+  },
+  "urethritis": {
+    "key_inquiry_points": [
+      "Urethral discharge, itching, or burning with dysuria, often related to a sexually transmitted infection (e.g., Chlamydia, Gonorrhea).",
+      "Urethral swab or NAAT identifies the pathogen; urine culture may be negative despite symptoms, distinguishing it from cystitis or a typical urinary tract infection.",
+      "In men, consider prostatitis if symptoms include perineal pain or a tender prostate on exam; in women, consider vaginitis if discharge is vaginal rather than urethral.",
+      "A recent new sexual partner or unprotected intercourse is a relevant historical clue."
+    ]
+  },
+  "prostatitis": {
+    "key_inquiry_points": [
+      "Perineal, suprapubic, or low back pain with dysuria, frequency, and sometimes fever or chills in acute bacterial prostatitis.",
+      "Tender, boggy, or warm prostate on digital rectal exam; avoid vigorous prostatic massage in suspected acute bacterial prostatitis.",
+      "Positive urine culture or expressed prostatic secretions support a bacterial etiology; chronic pelvic pain syndrome is a diagnosis of exclusion without infection.",
+      "Distinguish from hyperplasia or carcinoma by the acute or subacute onset of pain and infective signs rather than a purely progressive obstructive course."
+    ]
+  }
+}

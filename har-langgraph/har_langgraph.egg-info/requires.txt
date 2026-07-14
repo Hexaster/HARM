@@ -1,0 +1,9 @@
+langgraph>=0.2
+langchain-openai
+openai
+pydantic>=2
+python-dotenv
+
+[dev]
+pytest
+mypy

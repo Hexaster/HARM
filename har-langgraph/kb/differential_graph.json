@@ -1,0 +1,19 @@
+{
+  "stress incontinence": ["urge incontinence", "overflow incontinence", "overactive bladder", "lower urinary tract syndrome"],
+  "urge incontinence": ["stress incontinence", "overactive bladder", "urinary tract infection", "cystitis"],
+  "overflow incontinence": ["stress incontinence", "hyperplasia of prostate", "neurogenic bladder", "urethral stricture"],
+  "overactive bladder": ["stress incontinence", "urge incontinence", "urinary tract infection", "lower urinary tract syndrome"],
+  "lower urinary tract syndrome": ["hyperplasia of prostate", "urethral stricture", "prostatitis", "overactive bladder"],
+  "carcinoma of prostate": ["hyperplasia of prostate", "prostatitis", "contracture of bladder neck"],
+  "hyperplasia of prostate": ["carcinoma of prostate", "contracture of bladder neck", "urethral stricture", "neurogenic bladder"],
+  "contracture of bladder neck": ["hyperplasia of prostate", "urethral stricture", "neurogenic bladder"],
+  "urethral stricture": ["hyperplasia of prostate", "contracture of bladder neck", "neurogenic bladder", "urethritis"],
+  "neurogenic bladder": ["hyperplasia of prostate", "overflow incontinence", "urethral stricture", "contracture of bladder neck"],
+  "carcinoma of bladder": ["vesical calculus", "cystitis", "urinary tract infection"],
+  "vesical calculus": ["carcinoma of bladder", "cystitis", "hyperplasia of prostate"],
+  "urinary tract infection": ["cystitis", "urethritis", "prostatitis", "vaginitis"],
+  "cystitis": ["urinary tract infection", "vesical calculus", "carcinoma of bladder", "urge incontinence"],
+  "vaginitis": ["urethritis", "urinary tract infection", "cystitis"],
+  "urethritis": ["urinary tract infection", "prostatitis", "vaginitis", "cystitis"],
+  "prostatitis": ["urethritis", "urinary tract infection", "hyperplasia of prostate", "carcinoma of prostate"]
+}

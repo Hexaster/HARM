@@ -1,0 +1,17 @@
+# Graph orchestration
+langgraph>=0.2
+
+# LLM client — DeepSeek-R1 / Qwen via the OpenAI-compatible API
+# (OPENAI_API_KEY + OPENAI_BASE_URL). Do NOT add langchain-anthropic.
+langchain-openai
+openai
+
+# Structured data / reflection-output parsing
+pydantic>=2
+
+# Config
+python-dotenv
+
+# Testing & type-checking
+pytest
+mypy
