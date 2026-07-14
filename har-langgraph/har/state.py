@@ -18,3 +18,5 @@ class ClinicalNoteState(TypedDict, total=False):
     dda_error: Optional[str]
     ca_target: Optional[str]     # "ica" | "pda" | "dda" | None
     ca_feedback: Optional[str]
+    standardized_note: dict      # fetched by ca_match, consumed by ca_reflect
+    clinical_note: str           # final assembled 9-field note (assemble)
