@@ -20,10 +20,22 @@ Diagnostic basis:
 Differential diagnosis process:
 Final diagnosis:"""
 
-PATIENT_INFORMATION_EXTRACTION_PROMPT = """You are an experienced clinical note specialist, adept at extracting the medical history, physical examination, and auxiliary examination information from data provided by patient. Please use the information provided by the patient to systematically consider and itemize the medical history, physical examination, and auxiliary examinations. If certain data are not provided, mark the corresponding section as 'None' without making additional assumptions.
+PATIENT_INFORMATION_EXTRACTION_PROMPT = """
+You are an experienced clinical note specialist, 
+adept at extracting the medical history, physical examination, 
+and auxiliary examination information from data provided by patient. 
+Please use the information provided by the patient to systematically 
+consider and itemize the medical history, physical examination, and auxiliary examinations. 
+If certain data are not provided, mark the corresponding section as 'None' without making additional assumptions.
+
+Output your answer using exactly these three labeled sections, in this order:
+Medical history:
+Physical examination:
+Auxiliary examination:
 
 Below is the patient's question:
-{question}"""
+{question}
+"""
 
 ANALYSIS_AND_SUMMARIZE_PROMPT = """You are an experienced medical analysis expert, skilled in comprehensively analyzing, summarizing, and organizing a patient's medical history, physical examination, and auxiliary examination to document the patient's clinical features. Please carefully review the patient's issues and itemize the clinical features, including positive findings and negative symptoms and signs relevant for differential diagnosis. Be sure to use only the provided information, without referencing external data.
 
