@@ -47,7 +47,13 @@ Below is the medical history, physical examination, and auxiliary examination to
 Below is the patient's question:
 {question}"""
 
-MAKE_PRELIMINARY_DIAGNOSIS_PROMPT = """You are an experienced clinical diagnosis expert, skilled in making preliminary diagnoses and analyses based on provided patient clinical features. Please provide a preliminary diagnosis based on the patient's case features and detail the diagnostic basis point by point.
+MAKE_PRELIMINARY_DIAGNOSIS_PROMPT = """
+You are an experienced clinical diagnosis expert, skilled in making preliminary diagnoses and analyses based on provided patient clinical features. Please provide a preliminary diagnosis based on the patient's case features and detail the diagnostic basis point by point.
+
+Output your answer using exactly these two labeled sections, in this order:
+Initial diagnosis:
+Diagnostic basis:
+
 
 Below is the clinical features to this patient:
 {clinical_features}

@@ -10,8 +10,8 @@ def get_llm() -> ChatOpenAI:
     """
     Get the LLM instance based on the configuration.
     """
-    model_id = config.Config.model_id
-    max_tokens = config.Config.max_tokens
+    model_id = config.Config.MODEL_ID
+    max_tokens = config.Config.MAX_TOKENS
 
     api_key = os.environ["OPENAI_API_KEY"]
     base_url = os.environ["OPENAI_BASE_URL"]

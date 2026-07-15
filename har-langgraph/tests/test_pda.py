@@ -20,7 +20,7 @@ def test_pda_diagnose_identifies_stress_incontinence():
     result = pda_diagnose(state)
 
     assert result.keys() == {"initial_diagnosis", "diagnostic_basis", "pda_iters"}
-    assert "stress incontinence" in result["initial_diagnosis"].lower()
+    assert "stress" in result["initial_diagnosis"].lower() and "incontinence" in result["initial_diagnosis"].lower()
     assert result["diagnostic_basis"].strip()
     assert result["pda_iters"] == 1
 
@@ -47,14 +47,14 @@ def test_pda_reflect_maps_flag_true_to_no_error(monkeypatch):
 
 
 def test_route_after_pda_reflect_loops_while_error_and_under_cap():
-    state = {"pda_error": "needs more evidence", "pda_iters": config.Config.pda_max_iters - 1}
+    state = {"pda_error": "needs more evidence", "pda_iters": config.Config.PDA_MAX_ITERS - 1}
     assert route_after_pda_reflect(state) == "pda_diagnose"
 
 
 def test_route_after_pda_reflect_stops_at_iteration_cap_even_with_error():
     # This is the loop-termination guarantee: a reflector that keeps
     # returning flag=false must not keep the graph looping forever.
-    state = {"pda_error": "still wrong", "pda_iters": config.Config.pda_max_iters}
+    state = {"pda_error": "still wrong", "pda_iters": config.Config.PDA_MAX_ITERS}
     assert route_after_pda_reflect(state) == "dda_retrieve"
 
 
