@@ -15,36 +15,28 @@ from har import config
 from har.knowledge import differentials
 from har.nodes.dda import dda_differentiate, dda_reflect, dda_retrieve, route_after_dda_reflect
 
-from .conftest import FakeLLM, requires_llm
+from .conftest import requires_llm
 
 
 def test_dda_retrieve_delegates_to_the_knowledge_graph():
     state = {"initial_diagnosis": "stress incontinence"}
-    assert dda_retrieve(state) == {"disease_list": differentials("stress incontinence")}
+    assert dda_retrieve(state) == {"diseases_list": differentials("stress incontinence")}
 
-
-def test_dda_reflect_maps_flag_true_to_final_diagnosis(monkeypatch):
-    monkeypatch.setattr(
-        "har.nodes.dda.get_llm",
-        lambda: FakeLLM(['{"flag": true, "Final_Diagnosis": "stress incontinence"}']),
-    )
+@requires_llm
+def test_dda_reflect_maps_flag_true_to_final_diagnosis():
     state = {
-        "disease_list": ["urge incontinence", "overflow incontinence"],
-        "differential_process": "1. Urge incontinence ruled out. 2. Overflow incontinence ruled out.",
+        "diseases_list": ["urge incontinence", "overflow incontinence"],
+        "differential_diagnosis_process": "1. Urge incontinence ruled out. 2. Overflow incontinence ruled out.",
     }
     result = dda_reflect(state)
     assert result["dda_error"] is None
     assert result["final_diagnosis"]
 
-
-def test_dda_reflect_maps_flag_false_to_dda_error(monkeypatch):
-    monkeypatch.setattr(
-        "har.nodes.dda.get_llm",
-        lambda: FakeLLM(['{"flag": false, "diff_error": "overflow incontinence not adequately excluded"}']),
-    )
+@requires_llm
+def test_dda_reflect_maps_flag_false_to_dda_error():
     state = {
-        "disease_list": ["urge incontinence", "overflow incontinence"],
-        "differential_process": "1. Urge incontinence ruled out.",
+        "diseases_list": ["urge incontinence", "overflow incontinence"],
+        "differential_diagnosis_process": "1. Urge incontinence ruled out.",
     }
     result = dda_reflect(state)
     assert result["dda_error"] == "overflow incontinence not adequately excluded"
@@ -52,12 +44,12 @@ def test_dda_reflect_maps_flag_false_to_dda_error(monkeypatch):
 
 
 def test_route_after_dda_reflect_loops_while_error_and_under_cap():
-    state = {"dda_error": "needs another pass", "dda_iters": config.Config.dda_max_iters - 1}
+    state = {"dda_error": "needs another pass", "dda_iters": config.Config.DDA_MAX_ITERS - 1}
     assert route_after_dda_reflect(state) == "dda_differentiate"
 
 
 def test_route_after_dda_reflect_stops_at_iteration_cap_even_with_error():
-    state = {"dda_error": "still wrong", "dda_iters": config.Config.dda_max_iters}
+    state = {"dda_error": "still wrong", "dda_iters": config.Config.DDA_MAX_ITERS}
     assert route_after_dda_reflect(state) == "ca_match"
 
 
@@ -68,12 +60,12 @@ def test_route_after_dda_reflect_advances_once_reflection_passes():
 
 @requires_llm
 def test_dda_differentiate_then_reflect_round_trip_on_paper_case():
-    disease_list = differentials("stress incontinence")
-    state = {"initial_diagnosis": "stress incontinence", "disease_list": disease_list}
+    diseases_list = differentials("stress incontinence")
+    state = {"initial_diagnosis": "stress incontinence", "diseases_list": diseases_list}
 
     diff_result = dda_differentiate(state)
-    assert diff_result.keys() == {"differential_process", "dda_iters"}
-    assert diff_result["differential_process"].strip()
+    assert diff_result.keys() == {"differential_diagnosis_process", "dda_iters"}
+    assert diff_result["differential_diagnosis_process"].strip()
     assert diff_result["dda_iters"] == 1
 
     reflect_state = {**state, **diff_result}

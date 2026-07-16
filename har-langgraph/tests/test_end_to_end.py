@@ -15,8 +15,8 @@ NOTE_FIELDS = (
     "clinical_features",
     "initial_diagnosis",
     "diagnostic_basis",
-    "disease_list",
-    "differential_process",
+    "diseases_list",
+    "differential_diagnosis_process",
     "final_diagnosis",
 )
 

@@ -8,8 +8,8 @@ class ClinicalNoteState(TypedDict, total=False):
     clinical_features: str       # y4
     initial_diagnosis: str       # y5
     diagnostic_basis: str        # y6
-    disease_list: list[str]      # y7
-    differential_process: str    # y8
+    diseases_list: list[str]      # y7
+    differential_diagnosis_process: str  # y8
     final_diagnosis: str         # y9
     pda_iters: int
     dda_iters: int

@@ -1,12 +1,35 @@
 import re
 
-from har.llm import get_llm
+from pydantic import field_validator
+
+from har.llm import LLMResponse, get_llm, parse_json, text_from_llm
 from har import prompts
 
 _SECTION_PATTERN = re.compile(
     r"medical history:(.*?)physical examination:(.*?)auxiliary examination:(.*)",
     re.IGNORECASE | re.DOTALL,
 )
+
+
+class ExtractedPatientInformation(LLMResponse):
+    medical_history: str
+    physical_examination: str
+    auxiliary_examination: str
+
+    _normalize_text = field_validator(
+        "medical_history",
+        "physical_examination",
+        "auxiliary_examination",
+        mode="before",
+    )(text_from_llm)
+
+
+class ClinicalFeatures(LLMResponse):
+    clinical_features: str
+
+    _normalize_text = field_validator("clinical_features", mode="before")(
+        text_from_llm
+    )
 
 def ica_extract(state):
     msg = prompts.PATIENT_INFORMATION_EXTRACTION_PROMPT.format(
@@ -15,13 +38,18 @@ def ica_extract(state):
     llm = get_llm()
     out = llm.invoke(msg).content
 
-    medical_history, physical_examination, auxiliary_examination = _split_three_sections(out)
-
-    return {
-        "medical_history": medical_history,
-        "physical_examination": physical_examination,
-        "auxiliary_examination": auxiliary_examination,
-    }
+    try:
+        return parse_json(ExtractedPatientInformation, out).model_dump()
+    except ValueError:
+        # Accept the labeled format used by earlier prompt versions.
+        medical_history, physical_examination, auxiliary_examination = (
+            _split_three_sections(out)
+        )
+        return {
+            "medical_history": medical_history,
+            "physical_examination": physical_examination,
+            "auxiliary_examination": auxiliary_examination,
+        }
 
 def ica_analysis_and_summarize(state):
     msg = prompts.ANALYSIS_AND_SUMMARIZE_PROMPT.format(
@@ -31,7 +59,12 @@ def ica_analysis_and_summarize(state):
         question=state["question"],
     )
     
-    return {"clinical_features": get_llm().invoke(msg).content}
+    out = get_llm().invoke(msg).content
+    try:
+        return parse_json(ClinicalFeatures, out).model_dump()
+    except ValueError:
+        # Accept plain text produced by earlier prompt versions.
+        return {"clinical_features": out.strip()}
 
 def _split_three_sections(text):
     match = _SECTION_PATTERN.search(text)

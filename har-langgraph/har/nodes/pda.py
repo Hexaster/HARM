@@ -1,5 +1,5 @@
-from pydantic import BaseModel
-from har.llm import get_llm, parse_json
+from pydantic import field_validator
+from har.llm import LLMResponse, get_llm, parse_json, text_from_llm
 from har.knowledge import key_points
 from har.config import Config
 from har import prompts
@@ -11,9 +11,20 @@ _SECTION_PATTERN = re.compile(
 )
 
 
-class PDAReflection(BaseModel):
+class PDAReflection(LLMResponse):
     flag: bool
     diagnosis_error: str | None= None
+
+    _normalize_text = field_validator("diagnosis_error", mode="before")(text_from_llm)
+
+
+class PreliminaryDiagnosis(LLMResponse):
+    initial_diagnosis: str
+    diagnostic_basis: str
+
+    _normalize_text = field_validator(
+        "initial_diagnosis", "diagnostic_basis", mode="before"
+    )(text_from_llm)
 
 def pda_diagnose(state):
     msg = prompts.MAKE_PRELIMINARY_DIAGNOSIS_PROMPT.format(
@@ -26,7 +37,13 @@ def pda_diagnose(state):
     
     text = get_llm().invoke(msg).content
 
-    initial_diagnosis, diagnostic_basis = _split_dx_basis(text)
+    try:
+        diagnosis = parse_json(PreliminaryDiagnosis, text)
+        initial_diagnosis = diagnosis.initial_diagnosis
+        diagnostic_basis = diagnosis.diagnostic_basis
+    except ValueError:
+        # Accept the labeled format used by earlier prompt versions.
+        initial_diagnosis, diagnostic_basis = _split_dx_basis(text)
 
     return {
         "initial_diagnosis": initial_diagnosis,

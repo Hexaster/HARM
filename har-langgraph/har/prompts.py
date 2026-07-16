@@ -10,34 +10,47 @@ Below is the knowledge to this disease:
 {disease}
 {diagnostic_key_points}
 
-Below is the template for the clinical note:
-Medical history:
-Physical examination:
-Auxiliary examination:
-Case characteristics:
-Initial diagnosis:
-Diagnostic basis:
-Differential diagnosis process:
-Final diagnosis:"""
+Output only one JSON object with exactly these fields:
+{{
+  "medical_history": Str,
+  "physical_examination": Str,
+  "auxiliary_examination": Str,
+  "clinical_features": Str,
+  "initial_diagnosis": Str,
+  "diagnostic_basis": Str,
+  "diseases_list": List[Str],
+  "differential_diagnosis_process": Str,
+  "final_diagnosis": Str
+}}"""
 
 PATIENT_INFORMATION_EXTRACTION_PROMPT = """
-You are an experienced clinical note specialist, 
-adept at extracting the medical history, physical examination, 
-and auxiliary examination information from data provided by patient. 
-Please use the information provided by the patient to systematically 
+You are an experienced clinical note specialist,
+adept at extracting the medical history, physical examination,
+and auxiliary examination information from data provided by patient.
+Please use the information provided by the patient to systematically
 consider and itemize the medical history, physical examination, and auxiliary examinations. 
 If certain data are not provided, mark the corresponding section as 'None' without making additional assumptions.
 
-Output your answer using exactly these three labeled sections, in this order:
-Medical history:
-Physical examination:
-Auxiliary examination:
+Output only JSON as Dict{{
+  "medical_history": Str,
+  "physical_examination": Str,
+  "auxiliary_examination": Str
+}}.
 
 Below is the patient's question:
 {question}
 """
 
-ANALYSIS_AND_SUMMARIZE_PROMPT = """You are an experienced medical analysis expert, skilled in comprehensively analyzing, summarizing, and organizing a patient's medical history, physical examination, and auxiliary examination to document the patient's clinical features. Please carefully review the patient's issues and itemize the clinical features, including positive findings and negative symptoms and signs relevant for differential diagnosis. Be sure to use only the provided information, without referencing external data.
+ANALYSIS_AND_SUMMARIZE_PROMPT = """
+You are an experienced medical analysis expert,
+skilled in comprehensively analyzing, summarizing,
+and organizing a patient's medical history, physical examination,
+and auxiliary examination to document the patient's clinical features.
+Please carefully review the patient's issues and itemize the clinical features,
+including positive findings and negative symptoms and signs relevant for differential diagnosis.
+Be sure to use only the provided information, without referencing external data.
+
+Output only JSON as Dict{{"clinical_features": Str}}.
 
 Below is the medical history, physical examination, and auxiliary examination to this patient:
 {medical_history}
@@ -45,72 +58,117 @@ Below is the medical history, physical examination, and auxiliary examination to
 {auxiliary_examination}
 
 Below is the patient's question:
-{question}"""
+{question}
+"""
 
 MAKE_PRELIMINARY_DIAGNOSIS_PROMPT = """
-You are an experienced clinical diagnosis expert, skilled in making preliminary diagnoses and analyses based on provided patient clinical features. Please provide a preliminary diagnosis based on the patient's case features and detail the diagnostic basis point by point.
+You are an experienced clinical diagnosis expert,
+skilled in making preliminary diagnoses and analyses
+based on provided patient clinical features.
+Please provide a preliminary diagnosis based on the patient's case features
+and detail the diagnostic basis point by point.
 
-Output your answer using exactly these two labeled sections, in this order:
-Initial diagnosis:
-Diagnostic basis:
+Output only JSON as Dict{{
+  "initial_diagnosis": Str,
+  "diagnostic_basis": Str
+}}.
 
 
 Below is the clinical features to this patient:
 {clinical_features}
 
 Below is the patient's question:
-{question}"""
+{question}
+"""
 
-REFLECT_PRELIMINARY_DIAGNOSIS_PROMPT = """You are an experienced clinical review expert, skilled in evaluating the diagnostic validity of clinical notes based on key inquiry points for diseases. Please thoroughly review the key inquiry points of the preliminary diagnosis provided and assess whether the preliminary diagnosis and diagnostic basis in the clinical note align with these points.
+REFLECT_PRELIMINARY_DIAGNOSIS_PROMPT = """
+You are an experienced clinical review expert,
+skilled in evaluating the diagnostic validity of clinical notes
+based on key inquiry points for diseases.
+Please thoroughly review the key inquiry points of the
+preliminary diagnosis provided and assess whether the preliminary diagnosis
+and diagnostic basis in the clinical note align with these points.
 
-If deemed unreasonable, output the result as a JSON-formatted Dict{{"flag": false, "diagnosis_error": Str(Reasons for diagnostic errors)}}.
+If it is reasonable, output only JSON as Dict{{"flag": true}}.
+Otherwise, output only JSON as Dict{{"flag": false, "diagnosis_error": Str(Reasons for diagnostic errors)}}.
 
 Below is the preliminary diagnosis and diagnostic basis:
 {preliminary_diagnosis}
 {diagnostic_basis}
 
 Below is the key inquiry points:
-{key_inquiry_points}"""
+{key_inquiry_points}
+"""
 
-DIFFERENTIAL_DIAGNOSIS_PROMPT = """You are an experienced differential diagnosis expert, skilled in systematically analyzing key inquiry points to rule out diseases. Please carefully review the inquiry points of the diseases requiring differentiation and conduct a step-by-step differential diagnosis based on the patient's clinical note.
+DIFFERENTIAL_DIAGNOSIS_PROMPT = """
+You are an experienced differential diagnosis expert,
+skilled in systematically analyzing key inquiry points to rule out diseases.
+Please carefully review the inquiry points of the diseases requiring differentiation and conduct a step-by-step differential diagnosis based on the patient's clinical note.
 
-Document the differential diagnosis process point by point and output it in JSON format as Dict{{"diff_process": Str(differential diagnosis process)}}.
+Document the differential diagnosis process point by point and output only JSON as Dict{{"differential_diagnosis_process": Str(differential diagnosis process)}}.
 
 Below is the list of diseases to be ruled out through differential diagnosis:
 {diseases_list}
 
 Below is the key inquiry points to these diseases:
-{key_inquiry_points}"""
+{key_inquiry_points}
+"""
 
-REFLECT_DIFFERENTIAL_DIAGNOSIS_PROCESS_PROMPT = """You are an experienced clinical differential diagnosis expert, skilled in reflecting on and evaluating the rationality of differential diagnosis processes. Please reflect on the differential diagnosis process and assess whether the differentiation for each disease is reasonable.
+REFLECT_DIFFERENTIAL_DIAGNOSIS_PROCESS_PROMPT = """
+You are an experienced clinical differential diagnosis expert, skilled in reflecting on and evaluating the rationality of differential diagnosis processes.
+Please reflect on the differential diagnosis process and assess whether the differentiation for each disease is reasonable.
 
-If it is reasonable, output in JSON format as Dict{{"flag":true, "Final_Diagnosis": Str(final diagnosis)}}.
-Otherwise, output in JSON format as Dict{{"flag":false, "diff_error": Str(Diseases requiring rediagnosis)}}.
+If it is reasonable, output only JSON as Dict{{"flag":true, "final_diagnosis": Str(final diagnosis)}}.
+Otherwise, output only JSON as Dict{{"flag":false, "diff_error": Str(Diseases requiring rediagnosis)}}.
 
 Below is the list of diseases to be ruled out through differential diagnosis, along with the corresponding diagnostic process.
 {diseases_list}
 {differential_diagnosis_process}"""
 
-REFLECT_AND_CORRECT_ICA_PROMPT = """You are an experienced expert in reviewing clinical notes, skilled in comparing raw clinical note with a given standardized template. Now, please compare the obtained raw clinical note with the given standardized clinical note template. The part that needs to be analyzed is the medical history, physical examination, auxiliary examination, and clinical features. If you find any part to be unreasonable, provide suggestions for improvement, and output in JSON format as Dict{{"flag":false, "ICA_error": Str(suggestions for improvement)}}.
+REFLECT_AND_CORRECT_ICA_PROMPT = """
+You are an experienced expert in reviewing clinical notes,
+skilled in comparing raw clinical note with a given standardized template.
+Now, please compare the obtained raw clinical note with the
+given standardized clinical note template.
+The part that needs to be analyzed is the medical history,
+physical examination, auxiliary examination, and clinical features.
+If it is reasonable, output only JSON as Dict{{"flag":true}}.
+Otherwise, output only JSON as Dict{{"flag":false, "ica_error": Str(suggestions for improvement)}}.
 
 Below is the raw clinical note.
 {raw_clinical_note}
 
 Below is a standardized template for a standardized clinical note of the final diagnosis.
-{standardized_clinical_note}"""
+{standardized_clinical_note}
+"""
 
-REFLECT_AND_CORRECT_PDA_PROMPT = """You are an experienced expert in reviewing clinical notes, skilled in comparing raw clinical note with a given standardized template. Now, please compare the obtained raw clinical note with the given standardized clinical note template. The part that needs to be analyzed is the preliminary diagnosis and diagnostic basis. If you think this part is unreasonable, please give suggestions for improvement. , and output in JSON format as Dict{{"flag":false, "PDA_error": Str(suggestions for improvement)}}.
+REFLECT_AND_CORRECT_PDA_PROMPT = """
+You are an experienced expert in reviewing clinical notes,
+skilled in comparing raw clinical note with a given standardized template.
+Now, please compare the obtained raw clinical note with the given
+standardized clinical note template.
+The part that needs to be analyzed is the preliminary diagnosis and diagnostic basis.
+If it is reasonable, output only JSON as Dict{{"flag":true}}.
+Otherwise, output only JSON as Dict{{"flag":false, "pda_error": Str(suggestions for improvement)}}.
 
 Below is the raw clinical note.
 {raw_clinical_note}
 
 Below is a standardized template for a standardized clinical note of the final diagnosis.
-{standardized_clinical_note}"""
+{standardized_clinical_note}
+"""
 
-REFLECT_AND_CORRECT_DDA_PROMPT = """You are an experienced expert in reviewing clinical notes, skilled in comparing raw clinical note with agiven standardized template. Now, please compare the obtained raw clinical note with the givenstandardized clinical note template. The part that needs to be analyzed is the diseases list and differentialdiagnosis process. If you think this part is unreasonable, please give suggestions for improvement. , andoutput in JSON format as Dict{{"flag":false, "DDA_error": Str(suggestions for improvement)}}.
+REFLECT_AND_CORRECT_DDA_PROMPT = """
+You are an experienced expert in reviewing clinical notes,
+skilled in comparing raw clinical note with a given standardized template.
+Now, please compare the obtained raw clinical note with the given standardized clinical note template.
+The part that needs to be analyzed is the diseases list and differential diagnosis process.
+If it is reasonable, output only JSON as Dict{{"flag":true}}.
+Otherwise, output only JSON as Dict{{"flag":false, "dda_error": Str(suggestions for improvement)}}.
 
 Below is the raw clinical note.
 {raw_clinical_note}
 
 Below is a standardized template for a standardized clinical note of the final diagnosis.
-{standardized_clinical_note}"""
+{standardized_clinical_note}
+"""

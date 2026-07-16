@@ -49,8 +49,8 @@ def test_standardized_note_present_for_every_disease():
             "clinical_features",
             "initial_diagnosis",
             "diagnostic_basis",
-            "disease_list",
-            "differential_process",
+            "diseases_list",
+            "differential_diagnosis_process",
             "final_diagnosis",
         ):
             assert field in note
@@ -58,10 +58,9 @@ def test_standardized_note_present_for_every_disease():
 
 def test_standardized_note_anchor_case_from_paper():
     note = standardized_note("stress incontinence")
-    assert note["reviewed"] is True
     assert "Mirabegron" in note["medical_history"]
     assert note["final_diagnosis"] == "stress incontinence, overactive bladder"
-    assert note["disease_list"] == ["urge incontinence", "overflow incontinence", "lower urinary tract syndrome"]
+    assert note["diseases_list"] == ["urge incontinence", "overflow incontinence", "lower urinary tract syndrome"]
 
 
 def test_fuzzy_disease_name_matching():

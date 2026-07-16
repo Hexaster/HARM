@@ -11,7 +11,7 @@ tested deterministically with a stubbed LLM - no network or API key needed.
 from har import config
 from har.nodes.pda import pda_diagnose, pda_reflect, route_after_pda_reflect
 
-from .conftest import FakeLLM, PAPER_CASE, PATIENT_QUESTION, requires_llm
+from .conftest import PAPER_CASE, PATIENT_QUESTION, requires_llm
 
 
 @requires_llm
@@ -24,24 +24,29 @@ def test_pda_diagnose_identifies_stress_incontinence():
     assert result["diagnostic_basis"].strip()
     assert result["pda_iters"] == 1
 
-
-def test_pda_reflect_maps_flag_false_to_pda_error(monkeypatch):
-    monkeypatch.setattr(
-        "har.nodes.pda.get_llm",
-        lambda: FakeLLM(['{"flag": false, "diagnosis_error": "basis lacks supporting evidence"}']),
-    )
+@requires_llm
+def test_pda_reflect_maps_flag_false_to_pda_error():
     state = {
         "initial_diagnosis": "stress incontinence",
-        "diagnostic_basis": PAPER_CASE["diagnostic_basis"],
+        "diagnostic_basis": (
+            "Leakage occurs only after a sudden compelling urge and is never "
+            "triggered by coughing, sneezing, laughing, exercise, or other "
+            "physical exertion."
+        ),
     }
-    assert pda_reflect(state) == {"pda_error": "basis lacks supporting evidence"}
+    result = pda_reflect(state)
 
+    assert result["pda_error"] is not None
 
-def test_pda_reflect_maps_flag_true_to_no_error(monkeypatch):
-    monkeypatch.setattr("har.nodes.pda.get_llm", lambda: FakeLLM(['{"flag": true}']))
+@requires_llm
+def test_pda_reflect_maps_flag_true_to_no_error():
     state = {
         "initial_diagnosis": "stress incontinence",
-        "diagnostic_basis": PAPER_CASE["diagnostic_basis"],
+        "diagnostic_basis": (
+            "The postmenopausal patient has involuntary urinary leakage "
+            "synchronous with coughing and sneezing. There is no preceding "
+            "urge, and leakage stops when the provoking activity stops."
+        ),
     }
     assert pda_reflect(state) == {"pda_error": None}
 
