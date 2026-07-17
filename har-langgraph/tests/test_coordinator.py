@@ -1,15 +1,10 @@
 """Tests for the Coordinator Agent and its hierarchical route-back
-(paper Sec. 3.2; plan Task 6).
+(paper Sec. 3.2; plan Task 6)."""
 
-ca_match is a pure knowledge-base lookup (no LLM). ca_reflect's own
-control flow (which section to blame, which iteration counters to reset)
-is precisely specified by the plan and is tested by stubbing the private
-_run_ca_checks seam the plan's own pseudocode designs for this purpose, so
-no LLM or API key is needed. route_after_ca is a pure function of state.
-"""
+
 from types import SimpleNamespace
 
-from har import config
+from har.config import Config
 from har.nodes.coordinator import assemble, ca_match, ca_reflect, route_after_ca
 
 from .conftest import PAPER_CASE
@@ -78,7 +73,7 @@ def test_route_after_ca_advances_to_assemble_once_checks_pass():
 
 
 def test_route_after_ca_stops_at_iteration_cap_even_with_a_target():
-    state = {"ca_target": "ica", "ca_iters": config.Config.ca_max_iters}
+    state = {"ca_target": "ica", "ca_iters": Config.CA_MAX_ITERS}
     assert route_after_ca(state) == "assemble"
 
 
