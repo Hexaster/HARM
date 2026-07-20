@@ -18,3 +18,7 @@ class ClinicalNoteState(TypedDict, total=False):
     dda_error: Optional[str]
     ca_target: Optional[str]     # "ica" | "pda" | "dda" | None
     ca_feedback: Optional[str]
+    # LangGraph drops any key a node returns that is not declared here, so
+    # these must stay in the schema even though they are not note fields.
+    _std_note: dict              # ca_match -> ca_reflect
+    clinical_note: str           # assemble -> caller

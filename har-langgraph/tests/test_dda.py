@@ -13,27 +13,39 @@ job of the full end-to-end gate.
 """
 from har import config
 from har.knowledge import differentials
+from har.nodes import dda
 from har.nodes.dda import dda_differentiate, dda_reflect, dda_retrieve, route_after_dda_reflect
 
-from .conftest import requires_llm
+from .conftest import FakeLLM, requires_llm
 
 
 def test_dda_retrieve_delegates_to_the_knowledge_graph():
     state = {"initial_diagnosis": "stress incontinence"}
     assert dda_retrieve(state) == {"diseases_list": differentials("stress incontinence")}
 
-@requires_llm
-def test_dda_reflect_maps_flag_true_to_final_diagnosis():
+def test_dda_reflect_maps_flag_true_to_final_diagnosis(monkeypatch):
+    monkeypatch.setattr(
+        dda,
+        "get_llm",
+        lambda: FakeLLM(['{"flag": true, "final_diagnosis": "stress incontinence"}']),
+    )
     state = {
         "diseases_list": ["urge incontinence", "overflow incontinence"],
         "differential_diagnosis_process": "1. Urge incontinence ruled out. 2. Overflow incontinence ruled out.",
     }
     result = dda_reflect(state)
     assert result["dda_error"] is None
-    assert result["final_diagnosis"]
+    assert result["final_diagnosis"] == "stress incontinence"
 
-@requires_llm
-def test_dda_reflect_maps_flag_false_to_dda_error():
+
+def test_dda_reflect_maps_flag_false_to_dda_error(monkeypatch):
+    monkeypatch.setattr(
+        dda,
+        "get_llm",
+        lambda: FakeLLM(
+            ['{"flag": false, "diff_error": "overflow incontinence not adequately excluded"}']
+        ),
+    )
     state = {
         "diseases_list": ["urge incontinence", "overflow incontinence"],
         "differential_diagnosis_process": "1. Urge incontinence ruled out.",

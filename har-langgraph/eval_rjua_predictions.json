@@ -1,0 +1,776 @@
+{
+  "config": {
+    "split": "test",
+    "n": 50,
+    "mode": "HAR",
+    "covered_only": false
+  },
+  "overall": {
+    "n": 50,
+    "micro": {
+      "precision": 0.0294,
+      "recall": 0.0526,
+      "f1": 0.0377
+    },
+    "macro": {
+      "precision": 0.08,
+      "recall": 0.0467,
+      "f1": 0.0567
+    }
+  },
+  "kb_covered": {
+    "n": 32,
+    "micro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    },
+    "macro": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0
+    }
+  },
+  "kb_uncovered": {
+    "n": 18,
+    "micro": {
+      "precision": 0.125,
+      "recall": 0.129,
+      "f1": 0.127
+    },
+    "macro": {
+      "precision": 0.2222,
+      "recall": 0.1296,
+      "f1": 0.1574
+    }
+  },
+  "failures": 3,
+  "items": [
+    {
+      "id": "1",
+      "question": "医生您好，我昨天左边的睾丸痛，到医院做了B超：左侧睾丸形态饱满，回声不均匀减低，左侧附睾异常回声，查了血降钙素原13.69，C反应蛋白86.9，白细胞29.55，中性粒细胞百分比96.5%，血肌酐：99，尿常规白细胞：3.3/HP，红细胞：21.1/HP，我这种情况是怎么回事？需要处理吗？",
+      "gold": [
+        "睾丸炎",
+        "睾丸扭转",
+        "脓毒血症"
+      ],
+      "prediction": "急性睾丸附睾炎（左侧）伴全身炎症反应",
+      "precision": 1.0,
+      "recall": 0.3333333333333333,
+      "f1": 0.5,
+      "kb_covered": false,
+      "seconds": 19.7,
+      "error": null
+    },
+    {
+      "id": "24",
+      "question": "医生您好，我是19岁男性，2天前开始吃不下饭、全身没力气、发烧。体温39℃，我在半年前因为左侧精囊脓肿，在医院做了膀胱造瘘和精囊脓肿穿刺引流手术，我还有1型糖尿病病史，最近血糖控制的不太好。这可能是什么原因导致？应该做什么检查？",
+      "gold": [
+        "精囊脓肿"
+      ],
+      "prediction": "Suspected sepsis secondary to possible recurrent infection (e.g., genitourinary focus) or new opportunistic infection (e.g., esophageal candidiasis), with potential diabetic ketoacidosis (DKA) exacerbation",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 323.2,
+      "error": null
+    },
+    {
+      "id": "30",
+      "question": "医生您好，我母亲75岁，右侧腰痛1天来急诊看病，之前没有发热。在急诊做了CT示右输尿管结石伴积水。尿常规：尿白细胞 118.7/HP,血化验： 白细胞 9.71，C反应蛋白 25.87，中性粒细胞占比 64.2，降钙素原 0.077，PH 7.37，血糖 11.3，Sb 24.7，电解质正常，血肌酐 206。我母亲有糖尿病，但是之前肾功能是好的。请问她现在是什么诊断，该如何治疗？",
+      "gold": [
+        "右输尿管结石",
+        "肾积水",
+        "泌尿道感染",
+        "肾功能不全"
+      ],
+      "prediction": "Obstructive uropathy secondary to right ureteral stone with acute kidney injury (AKI) and sterile pyuria",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 49.5,
+      "error": null
+    },
+    {
+      "id": "65",
+      "question": "医生您好，我25岁了，今天我突然觉得下面左侧睾丸痛，已经持续大概5个多小时了，不动也痛，走动也痛，到急诊做睾丸B超：左侧睾丸内目前未见明显血流信号，左侧睾丸上方高回声区。我这个到底怎么回事啊？",
+      "gold": [
+        "睾丸扭转"
+      ],
+      "prediction": "左侧睾丸扭转（Testicular Torsion）",
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "kb_covered": false,
+      "seconds": 17.9,
+      "error": null
+    },
+    {
+      "id": "79",
+      "question": "医生您好，我母亲73岁，三天前中医拔火罐后就小便不通畅，人也没有力气，平时一直有高血压，糖尿病也有但是没怎么治疗过，糖尿病足刚截肢过，最近胃口也不好，现在神志也不好，就立即去了医院，血压150/96,心率98，查血：C反应蛋白 218.87，白细胞 17.47，中性粒细胞百分比 90.6，血红蛋白：106，血小板：371，血气： PH 7.325， 血钾 3.9，Sb14， 乳酸 1.1，血糖：43.0，血酮体（+）血肌酐 114，D二聚体 1.15，做了泌尿科CT：双肾盂、输尿管积水扩张积水，膀胱充盈明显，未见明显血块。医生还告了病危，请问我母亲现在到底是什么情况啊？",
+      "gold": [
+        "神经源性尿失禁",
+        "急性肾功能不全"
+      ],
+      "prediction": "Severe sepsis secondary to urinary obstruction, diabetic ketoacidosis (DKA), and acute renal failure in the context of uncontrolled diabetes mellitus",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 35.4,
+      "error": null
+    },
+    {
+      "id": "82",
+      "question": "医生您好，我父亲74岁，因为小肚子胀痛门诊看病，查B超提示前列腺增生，残余尿200ml，医生予以导尿，随后出现血尿症状，急诊做了CT提示膀胱内血块，血白细胞6.74，中性粒细胞占比73.6%,血红蛋白 141，血小板164,凝血功能（-），静脉血气（-）,他有心脏病，吃点什么药我不清楚，请问他现在这种情况应该怎么治疗？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Final diagnosis requires integration of clinical findings and test results as per the described differential process",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 1404.5,
+      "error": null
+    },
+    {
+      "id": "84",
+      "question": "医生您好，我父亲73岁，3个月前做过绿激光前列腺剜除术，做好排尿好的，2周前出现了排尿不通畅，做过膀胱镜检查说是尿道球部狭窄，明天都要入院做手术了，半夜里突然排尿困难，去了急诊就医，做了B超：残余尿有500，要插导尿管还插不进去，我们现在应该怎么办？明天手术还能做吗？",
+      "gold": [
+        "尿道狭窄"
+      ],
+      "prediction": "Differentiation process appropriately addresses key discriminators (age, anatomical vs functional causes, targeted testing) for these conditions. Final diagnosis depends on which criteria are met through evaluation.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 104.2,
+      "error": null
+    },
+    {
+      "id": "89",
+      "question": "医生您好，我母亲57岁，3周前做了输尿管镜碎石术，手术后出现脑梗，经神经内科治疗后好转了，昨天因为一直头痛不能缓解去看了急诊，留院观察，查了CT，见右侧D-J管在位，右肾周血肿较2022-11-1有增大，医生说绝对卧床+腹带加压包扎，2天后又查了CT肾周血肿较之前无明显增大，神经内科医生说恢复口服阿司匹林+波立维，但是肌酐一直在升高，做了CT和之前比较考虑尿潴留导致急性肾功能不全，肌酐408，C反应蛋白 19.51，白细胞 9.03，中性百分比 60.9%，血红蛋白 86，血小板 250，降钙素原 0.3，D二聚体 0.92，B型钠尿肽：655 ，目前我母亲胃口不好，精神还行，请问我母亲现在怎么治疗才能快点好起来？",
+      "gold": [
+        "输尿管结石术后",
+        "神经源性膀胱",
+        "急性尿潴留",
+        "肾周血肿",
+        "急性肾功能不全",
+        "急性肾盂肾炎",
+        "心功能不全"
+      ],
+      "prediction": "Acute kidney injury (AKI) secondary to obstructive uropathy from urinary retention, complicated by post-procedural renal hematoma and inflammatory response.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 32.0,
+      "error": null
+    },
+    {
+      "id": "95",
+      "question": "医生您好，我父亲70岁，平时晚上上厕所次数有点多，大概3-4次，白天也比较频繁，平时一直口服多沙唑嗪、非那雄胺，因为3年前装了心脏支架，一直长期口服阿司匹林、波立维，这次因为小便有血已经2天了就去了医院看病，做了检查膀胱血块7*7cm，血指标：白细胞：5.21，血红蛋白：151，血肌酐：71，PT：11.3，INR：0.96，请问我父亲这是什么情况？应该怎么处理？",
+      "gold": [
+        "前列腺增生\n血尿\n膀胱填塞"
+      ],
+      "prediction": "抗血小板药物相关膀胱出血伴血块形成",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 81.2,
+      "error": null
+    },
+    {
+      "id": "97",
+      "question": "医生您好，我父亲65岁，2周前做的钬激光前列腺剜除术，这两天小便出血了，精神也不太好，请问我们现在应该怎么办？",
+      "gold": [
+        "钬激光前列腺剜除术后\n血尿\n膀胱填塞"
+      ],
+      "prediction": "术后迟发性出血伴继发性贫血可能",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 25.4,
+      "error": null
+    },
+    {
+      "id": "107",
+      "question": "医生您好，我父亲65岁，昨天在医院做的前列腺增生手术，昨天回家后导尿管就堵住了，里面好像有血块一样的东西，去医院做了CT检查，导尿管在位，膀胱内血块约3cm，C反应蛋白 25.84，白细胞 18.57，血红蛋白 131，血小板 251。请问我们现在应该怎么处理？",
+      "gold": [
+        "前列腺增生术后血尿导致的膀胱填塞"
+      ],
+      "prediction": "术后膀胱血块形成伴导尿管阻塞及炎症反应",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 22.9,
+      "error": null
+    },
+    {
+      "id": "108",
+      "question": "医生您好，我父亲67岁，之前外院做过前列腺穿刺手术，是前列腺增生，手术后小便里面有血，插过导尿管，前天开始小便越来越红了，去了医院就诊，血压113/84 mmHg，做了CT：膀胱血块7*4cm，前列腺增生明显突入膀胱；查血：降钙素原 <0.02,血清肌酐 45；C反应蛋白 3.49，白细胞 6.2，血红蛋白 132，血小板 237，高血压一直吃药的，请问现在应该需要怎么继续治疗啊？",
+      "gold": [
+        "前列腺增生术后血尿导致的膀胱填塞"
+      ],
+      "prediction": "",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 353.2,
+      "error": "ValueError: Could not find the labeled sections 'initial diagnosis' and 'diagnostic basis' in LLM output: '\\n\\n```json\\n{\\n  \"initial_diagnosis\": \"Gross hematuria secondary to benign prostatic hyperplasia (BPH) with intravesical prostatic protrusion (IPP) and bladder blood clot formation\",\\n  \"diagnostic_basis\": \"1. History of BPH and prior prostate biopsy complicated by hematuria supports a predisposition to bleeding. 2. CT-confirmed large bladder blood clot (7x4 cm) and significant IPP (>10 mm), which mechanically irritates the bladder mucosa and obstructs venous return, increasing hemorrhage risk. 3. Absence of infection markers (procalcitonin <0.02 ng/mL, normal WBC) excludes septic causes. 4. Normal renal function (creatinine 45 μmol/L) and platelet count (237×10^9/L) suggest bleeding is localized rather than systemic. 5. Critical limitations: Unreported PSA levels prevent prostate cancer risk stratification, and lack of documented response to BPH medical therapy (e.g., alpha-blockers) weakens benign etiology confirmation.  }\\n```'"
+    },
+    {
+      "id": "110",
+      "question": "医生您好，我父亲82岁，2周前因排尿困难在医院插过导尿管后小便很红，没处理，后来导尿管拔掉了还是小便很红而且自己排尿也不通畅，再去医院看了，查了血，血肌酐：92，B型钠尿肽 36，降钙素原：0.041，D二聚体 0.2， C反应蛋白 <0.5  白细胞：10 *10^9 中性粒细胞百分比：85.9%，血红蛋白 126 血小板 158 血气：PH7.341, 血钾3.9，血糖 8.7 ，查了CT：膀胱血块形成、膀胱填塞、前列腺明显增大。我父亲以前脑梗过，最近没有吃活血药，请问现在应该怎么办？",
+      "gold": [
+        "前列腺增大导致排尿困难"
+      ],
+      "prediction": "The differential diagnosis process is rational. Each condition is distinguished by specific clinical features (e.g., PSA/DRE for prostate cancer, cystoscopy/surgical history for bladder neck contracture, urethral imaging/trauma history for stricture, and urodynamics/neurological deficits for neurogenic bladder). The evaluations appropriately separate structural, inflammatory, neoplastic, and neurological etiologies using targeted diagnostic criteria.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 492.2,
+      "error": null
+    },
+    {
+      "id": "133",
+      "question": "医生您好，我39岁，阴茎头一致被包皮覆盖，龟头外露的时候感觉很困难，有个东西卡住一样，请问我是什么情况，需要手术么？",
+      "gold": [
+        "包皮过长",
+        "包茎"
+      ],
+      "prediction": "病理性包茎（非瘢痕性）",
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "kb_covered": false,
+      "seconds": 19.9,
+      "error": null
+    },
+    {
+      "id": "135",
+      "question": "医生您好，我31岁，之前出差有过一次无保护的性行为，现在感觉包皮反复红肿瘙痒1个礼拜了，请问我得了什么病，应该怎么治疗",
+      "gold": [
+        "龟头包皮炎"
+      ],
+      "prediction": "念珠菌性包皮龟头炎可能性大，需排除其他性传播感染",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 15.4,
+      "error": null
+    },
+    {
+      "id": "136",
+      "question": "医生您好，我32岁，从小包皮过长，现在准备要孩子，备孕，需要割包皮么？",
+      "gold": [
+        "包皮过长"
+      ],
+      "prediction": "Physiological phimosis (asymptomatic redundant prepuce)",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 325.5,
+      "error": null
+    },
+    {
+      "id": "138",
+      "question": "医生您好，我26岁，前几天有过一次和不认识的人的性行为，当时没有戴套。这两天尿道口不舒服，流出很多白色的脓液，我是什么诊断，应该怎么办？",
+      "gold": [
+        "尿道炎"
+      ],
+      "prediction": "",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 1111.4,
+      "error": "ValueError: Failed to parse JSON: Invalid control character at: line 2 column 86 (char 87)"
+    },
+    {
+      "id": "142",
+      "question": "医生您好，我是75岁男性，体检发现的双肾结石，2天前【肾CTU】双肾位置无异常，注入对比剂前后双肾实质内可见无明确强化小低密度灶。右肾中下份肾盏内可见鹿角型、颗粒样致密影，伴相应区域肾盏扩张。双肾周少许渗出，左侧输尿管上段颗粒样致密影。左肾盂、肾盏和左输尿管未见明显扩张。右肾中下份肾盏多发结石伴肾盏扩张，左肾盏小结石，左侧输尿管上段结石，双肾周少许渗出，膀胱内壁略毛糙。请问我的治疗方案。",
+      "gold": [
+        "右侧鹿角形结石",
+        "左输尿管上段结石"
+      ],
+      "prediction": "无症状性复杂性肾结石伴慢性尿路炎症改变",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 41.5,
+      "error": null
+    },
+    {
+      "id": "143",
+      "question": "医生您好，我是因为发现左肾萎缩2年来看的，2021-04于我院体检，CT平扫示：左肾萎缩，左侧肾盏内见点状高密度影，左肾血管走行区可见局部呈瘤样扩张伴边缘点状钙化。结论：左肾萎缩，左肾结石；左肾动脉瘤。予随访。左肾动脉走行区结节样增密影伴环形钙化，直径约12mm。2022-07-27MRI提示动脉瘤增大至1.7cm，具体报告未见。 既往史：2007年因尿毒症行右肾移植，2020年右肾癌全切术；有高血压病史，规律服用奥美沙坦酯；持续服用雷帕、他克莫司、骁悉抗排异。请问我的治疗方案。",
+      "gold": [
+        "左肾无功能",
+        "左肾动脉瘤",
+        "继发的肾血管性高血压",
+        "合并右肾根治性切除术",
+        "肾移植后"
+      ],
+      "prediction": "Progressive left renal artery aneurysm with associated renal atrophy and calculi in the context of a transplanted kidney and immunosuppression",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 29.4,
+      "error": null
+    },
+    {
+      "id": "145",
+      "question": "医生您好，我是一名68岁的女性患者，发现尿白细胞增高2月余，检查示左侧输尿管上段小结石，其上输尿管及肾盂稍扩张；左肾萎缩，左肾结石。超声：左肾结石，左肾囊肿，大的约40*29mm，左肾盂扩张，左侧输尿管上段扩张。查SP骨扫描-CT：左肾GFR重度减低，右肾GFR正常。\n既往史：糖尿病病史，时间11年，平时胰岛素控制。脑梗个人史，平时服用阿司匹林，已停药4天。请问我的治疗方案。",
+      "gold": [
+        "左肾失功",
+        "左输尿管结石伴感染"
+      ],
+      "prediction": "Left obstructive uropathy secondary to ureteral calculus with chronic kidney damage",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 35.0,
+      "error": null
+    },
+    {
+      "id": "149",
+      "question": "医生您好，我是检查发现左肾萎缩4年，2天前查 泌尿系平扫：左肾及肾盂输尿管移行处多发结石，左肾萎缩伴重度积水，较2年前相仿；左肾囊肿可能；胆囊结石，胆囊炎；左侧髂骨及耻骨骨岛可能。\n既往史：高血压病，平素规律口服ACEI类降压药。请问我的治疗方案。",
+      "gold": [
+        "左肾失功"
+      ],
+      "prediction": "Chronic left obstructive uropathy secondary to long-standing nephrolithiasis and ureteropelvic junction obstruction, with associated renal atrophy and hydronephrosis.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 21.1,
+      "error": null
+    },
+    {
+      "id": "172",
+      "question": "医生，您好。我一个月前体检发现左腹膜后有一个占位。外院增强CT检查结果显示，左腹膜后结节，大小约29*28mm，考虑Castleman病可能。我确诊高血压已经五年了。请问，根据我的病情，您认为我需要怎样的治疗呢？",
+      "gold": [
+        "左腹膜后占位",
+        "Castleman病"
+      ],
+      "prediction": "单中心型Castleman病可能性大",
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6666666666666666,
+      "kb_covered": false,
+      "seconds": 15.5,
+      "error": null
+    },
+    {
+      "id": "174",
+      "question": "医生您好，我大概一个月前开始感觉腹胀。一周前行双肾增强MRI：右肾下缘团块灶伴右侧肾周筋膜增厚，13*12cm，考虑后腹膜间质来源肿瘤可能大（如平滑肌瘤或肉瘤等），右肾及右侧腰大肌受累可能，肝脏、双肾多发小囊肿，请随访。想问问看后续我怎么治疗呢？",
+      "gold": [
+        "右侧腹膜后巨大占位"
+      ],
+      "prediction": "Retroperitoneal sarcoma (likely leiomyosarcoma) with possible involvement of right kidney and ipsilateral psoas muscle",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 17.5,
+      "error": null
+    },
+    {
+      "id": "178",
+      "question": "医生，您好，我是膀胱恶性肿瘤复发，我2018年开始多次做了经尿道膀胱肿瘤电切,病理提示为高级别尿路上皮癌，一周前膀胱增强MRI检查发现膀胱壁有弥漫性增厚伴强化，还有双侧髂血管旁小淋巴结。想问问看我接下来怎么做？",
+      "gold": [
+        "膀胱肿瘤"
+      ],
+      "prediction": "Recurrent high-grade urothelial carcinoma with suspected local progression and possible regional lymph node involvement",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 14.3,
+      "error": null
+    },
+    {
+      "id": "189",
+      "question": "医生，您好。我是一名65岁的男性患者，最近进行了检查发现右肾上腺有一个占位。根据一周前的肾上腺增强CT结果显示，右侧肾上腺内侧枝可见不规则结节影，病灶大小约为39mm×34mm×37mm。我有高血压病史，平时服用络活喜和倍他乐克来控制血压，目前血压稳定在145/95mmHg。我已经进行了心电图和胸部CT检查，结果显示心房颤动，胸部未见明显异常。请问，根据我的病情，您认为我需要怎样的治疗方案？谢谢。",
+      "gold": [
+        "右肾上腺占位"
+      ],
+      "prediction": "Right adrenal incidentaloma with indeterminate malignancy potential",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 22.9,
+      "error": null
+    },
+    {
+      "id": "203",
+      "question": "患者：医生您好，我是一名74岁的男性患者。最近我出现了一些排尿困难的症状，包括尿频、尿急、尿等待、尿无力、尿不尽，夜间还会频繁起夜排尿，大约8-10次。我还做了IPSS评分，得分为29分。最近的检查结果显示我有尿潴留和双肾积水。我很担心这些症状的影响和可能的治疗方案，请问您有什么建议和治疗方案吗？",
+      "gold": [
+        "前列腺增生",
+        "双肾积水"
+      ],
+      "prediction": "Final diagnosis requires cystoscopy/urodynamics and clinical correlation as per the differential process.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 423.4,
+      "error": null
+    },
+    {
+      "id": "209",
+      "question": "患者：医生您好，我是一名55岁的男性患者。最近两个多月来，我一直感到会阴部不适，并伴有尿频和尿急的症状。我之前去了外院做了一些检查，结果显示我有前列腺增生症，但尿后残余量正常，尿常规也没有异常。我主要的症状是憋尿后排尿明显缓慢。我想请问您，针对我的情况，您有什么治疗方案可以推荐吗？",
+      "gold": [
+        "慢性前列腺炎"
+      ],
+      "prediction": "Differentiation process appropriately considers key clinical features, risk factors, diagnostic tests, and treatment responses for each condition. The logic follows standard urological diagnostic pathways with correct emphasis on age, symptom patterns, anatomical findings (DRE/imaging), and exclusion criteria.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 392.2,
+      "error": null
+    },
+    {
+      "id": "213",
+      "question": "患者：医生您好，我是一名53岁的男性患者。我有一个问题想请教您，我已经有一年左右的时间出现了渐进性排尿困难的症状，每天晚上还会夜尿一次。白天的时候我还伴有尿频、尿急、尿分叉的情况，而且排尿结束后还会有终末尿滴沥或者尿中断的情况。偶尔还会有尿痛的感觉，但没有肉眼血尿和发热的症状。我想请问医生，这种情况下应该如何治疗呢？",
+      "gold": [
+        "前列腺增生",
+        "前列腺炎"
+      ],
+      "prediction": "Final diagnosis would depend on confirmation through specified tests (e.g., biopsy for carcinoma, cystoscopy for contracture/stricture, urodynamics for neurogenic bladder), as the differential process appropriately rules out each condition based on clinical history, risk factors, and diagnostic findings.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 503.6,
+      "error": null
+    },
+    {
+      "id": "226",
+      "question": "患者：医生您好，我是一名71岁的男性患者。最近我发现自己有尿频的情况，每晚都要夜尿两次。但是我并没有排尿困难的感觉，最近还做了MRI检查，结果未见明显异常。我想请问您对我的病情有什么治疗方案吗？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Nocturnal polyuria",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 322.5,
+      "error": null
+    },
+    {
+      "id": "231",
+      "question": "患者：医生您好，我是一名54岁的男性患者。最近我突然出现了尿频、尿急和尿痛的症状，有时候还会有血尿。我没有接受任何特殊治疗。请问您能给我一些建议或者治疗方案吗？",
+      "gold": [
+        "前列腺炎或者泌尿道感染"
+      ],
+      "prediction": "Appropriate diagnosis confirmed via outlined steps",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 273.5,
+      "error": null
+    },
+    {
+      "id": "237",
+      "question": "患者：医生您好，我是一名66岁的男性患者。我有一个问题想请教您，我已经有2年多了，出现了渐进性排尿困难的症状，而且夜间尿频也增多，大概每天要上3次厕所。白天我还伴有尿频和轻度尿急的感觉，尿流还会分叉，而且终末尿滴沥或者尿中断。但是我没有明显的尿痛，也没有肉眼血尿，也没有发热的症状。我之前一直在服用多沙唑嗪和非那雄胺来维持治疗，但是效果并不理想。在这段时间里，我还出现了3次尿潴留的情况。我想请问您，对于我的病情，您有什么治疗方案可以推荐吗？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Differential diagnosis process is rational. Final diagnosis depends on confirmation via indicated tests (PSA/DRE/biopsy for carcinoma, cystoscopy for contracture/stricture, urodynamics/neurological evaluation for neurogenic bladder).",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 832.5,
+      "error": null
+    },
+    {
+      "id": "247",
+      "question": "患者：医生您好，我是一名51岁的男性患者。最近我出现了一些排尿方面的问题，包括进行性排尿困难、尿频、尿急等症状。我还注意到尿等待时间变长，尿流也变得细弱，尿不尽感很明显，而且夜间还会起夜2次。我进行了IPSS评分，得分为23分。我之前尝试了一些药物治疗，但效果并不理想。我想请问医生，您有什么治疗方案可以推荐给我吗？",
+      "gold": [
+        "慢性前列腺炎"
+      ],
+      "prediction": "The differential diagnosis process for the listed conditions (carcinoma of prostate, contracture of bladder neck, urethral stricture, neurogenic bladder) is reasonable. Final diagnosis depends on confirmation via specified tests (e.g., PSA/DRE/biopsy for prostate cancer, cystoscopy for stricture/contracture, urodynamics/neurological evaluation for neurogenic bladder).",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 828.4,
+      "error": null
+    },
+    {
+      "id": "249",
+      "question": "患者：医生您好，我是一名85岁的男性患者，这次是前列腺增生的复诊。我最近出现了尿频、尿急的症状，而且夜间上厕所的次数也明显增多。我没有尿痛、血尿的情况，也没有腰酸、腰痛、腰胀的感觉，同时也没有畏冷、发热、寒颤的症状，也没有腹痛、腹胀的不适。请问医生，针对我的情况，您有什么治疗方案呢？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "The differential diagnosis process is reasonable and appropriately differentiates between carcinoma of prostate, contracture of bladder neck, urethral stricture, and neurogenic bladder based on clinical evaluation, imaging, laboratory findings, and exclusion of structural/functional etiologies.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 1228.7,
+      "error": null
+    },
+    {
+      "id": "269",
+      "question": "患者：医生您好，我是一名69岁的男性患者。最近一个多月来，我出现了尿线中断的情况，并且伴有睾丸痛。我并没有尿频的情况，但是偶尔会有排尿困难和尿线变细的情况。我很担心这个问题，想请问您有什么治疗方案吗？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Final diagnosis requires clinical correlation based on history, exam, and diagnostic tests as outlined in the differential process",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 194.2,
+      "error": null
+    },
+    {
+      "id": "277",
+      "question": "患者：医生，您好。我是一名66岁的男性患者，最近出现了反复尿潴留的情况。我在前几天进行了前列腺穿刺检查，结果显示前列腺组织增生并伴有间质淋巴细胞浸润。我很担心这个情况，请问您有什么治疗方案可以推荐给我吗？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Final diagnosis requires integration of clinical findings and test results, but the differential process appropriately rules out each condition based on stated criteria: carcinoma of prostate (PSA/DRE), contracture (surgical history/cystoscopy), urethral stricture (trauma/imaging), and neurogenic bladder (neurological deficits/urodynamics).",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 840.4,
+      "error": null
+    },
+    {
+      "id": "279",
+      "question": "患者：医生您好，我是一名41岁的男性患者。我有一个问题想请教您。最近两个月来，我一直有间断性的尿道口脓性分泌物，我之前去了复旦大学附属中山医院，医生给我开了头孢曲松等药物治疗，但是症状一直反复出现。所以我来这里希望能够得到进一步的治疗方案。请问您有什么建议吗？",
+      "gold": [
+        "泌尿道感染"
+      ],
+      "prediction": "The differential diagnosis process appropriately differentiates between urinary tract infection, prostatitis, vaginitis, and cystitis through systematic evaluation of clinical features, laboratory findings, gender-specific considerations, symptom localization, temporal patterns, and exclusion of mimics. The reasoning follows standard clinical pathways and addresses key distinguishing factors for each condition.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 945.7,
+      "error": null
+    },
+    {
+      "id": "280",
+      "question": "患者：医生您好，我是一名55岁的男性患者。我多年来一直有尿不尽的问题，同时伴有间歇性无痛肉眼血尿和尿无力的症状。我之前一直在服用多沙唑嗪和米拉贝隆进行治疗，但效果一般。这次来门诊是为了配药，请问您有什么治疗方案可以推荐给我吗？",
+      "gold": [
+        "慢性前列腺炎"
+      ],
+      "prediction": "",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 53.6,
+      "error": "ValueError: Failed to parse JSON: Invalid control character at: line 2 column 1367 (char 1368)"
+    },
+    {
+      "id": "282",
+      "question": "患者：医生您好，我是一名60岁的男性患者。最近我出现了进行性排尿困难、尿频和尿急的症状，尿流也变得很细，尿不尽的感觉很明显，夜间还要起床5次上厕所。我之前尝试了药物治疗，但效果并不理想。我很担心这些症状会对我的生活质量造成影响，想请问您有什么治疗方案可以推荐给我吗？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Final diagnosis would depend on confirmatory test results (e.g., biopsy for carcinoma, cystoscopy for contracture, urethrogram for stricture, urodynamics for neurogenic bladder), as all differentials are appropriately distinguished through listed diagnostic criteria.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 493.5,
+      "error": null
+    },
+    {
+      "id": "310",
+      "question": "患者：医生您好，我是一名59岁的男性患者。最近我在外院做了一次MRI检查，结果显示我患有前列腺增生，并且前列腺已经突入到膀胱内。我很担心这个问题，请问您有什么治疗方案可以推荐给我吗？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Differentiation is reasonable. The process appropriately uses clinical history, physical exam findings (DRE, urethral palpation), PSA trends, imaging/endoscopy (cystoscopy, urethrogram), and urodynamics to distinguish between structural (carcinoma, contracture, stricture) and functional (neurogenic bladder) etiologies. Confirmatory tests (biopsy, MRI, cystoscopy) are correctly prioritized to exclude malignancies and anatomical abnormalities, ensuring logical exclusion/inclusion criteria for each condition.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 1123.6,
+      "error": null
+    },
+    {
+      "id": "338",
+      "question": "患者：医生您好，我是一名50岁的男性患者。我有一个问题想请教您，我已经有4年时间勃起不佳，并且没有尿频和尿急的情况。我感觉神清气平，自己能够正常行走进入诊室。我注意到双侧肾区没有叩痛感，腹部也没有触及到肿块，双侧腹股沟也没有淋巴结肿大。双侧睾丸和附睾的大小和形态都正常，没有触及到肿块。双侧精索静脉也没有明显的曲张，阴茎的大小也正常，包皮和龟头也没有红肿或渗出的情况。我没有糖尿病和高血压的病史，也没有肝肾功能不全或其他慢性病的病史，也没有手术或外伤的经历。\n我很担心这个问题，想请问您有什么治疗方案可以帮助我恢复勃起功能呢？",
+      "gold": [
+        "男性勃起障碍"
+      ],
+      "prediction": "Psychogenic or mixed erectile dysfunction",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 21.3,
+      "error": null
+    },
+    {
+      "id": "340",
+      "question": "患者：医生您好，我是一名67岁的男性患者。我在前段时间做了一次PSA检查，结果显示PSA值为35.52ng/ml，同时做了一次CT检查，显示前列腺增大。之后在前几周分别进行了PSA+FPSA组合检查，结果显示总前列腺特异性抗原分别为12.30ng/ml和6.19ng/ml，游离前列腺特异性抗原均为1.37ng/ml，游离PSA/总PSA分别为0.11和0.22。\n\n我很担心这些检查结果，想请问您对我的病情有何看法？是否需要进行治疗？如果需要治疗，您能告诉我具体的治疗方案吗？谢谢。",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Suspicion for prostate malignancy requiring further diagnostic evaluation",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 123.2,
+      "error": null
+    },
+    {
+      "id": "390",
+      "question": "患者：医生您好，我是一名72岁的男性患者。最近我出现了排尿不畅、尿频尿急的症状，并且会阴部也感到疼痛。这个问题已经困扰我半年了。我想请问您，我应该如何治疗这个问题呢？",
+      "gold": [
+        "前列腺增生",
+        "前列腺炎"
+      ],
+      "prediction": "Final diagnosis requires integration of clinical findings and confirmatory tests (PSA/MRI for prostate cancer, cystoscopy for contracture/stricture, urodynamics for neurogenic bladder). The most probable diagnosis depends on dominant clinical features: prior surgery suggests contracture, neurological signs indicate neurogenic bladder, trauma history favors stricture, while elevated PSA/prostate irregularities suggest malignancy.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 493.9,
+      "error": null
+    },
+    {
+      "id": "397",
+      "question": "患者：医生您好，我是一名61岁的男性患者。最近冬季我发现自己排尿困难，感到非常不舒服。我最近做了一次检查，结果显示我的PSA值为5.72，F/T值为5.26。此外，B超检查显示我有前列腺增生并且残余尿量为70ml。我很担心这个情况，请问您有什么治疗方案可以推荐给我吗？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Diagnosis to be confirmed based on the outlined evaluations for each condition",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 80.0,
+      "error": null
+    },
+    {
+      "id": "400",
+      "question": "患者：医生您好，我是一名72岁的男性患者。最近我出现了排尿不适的症状，包括尿频、尿急和尿痛等。我没有腰酸腰痛的感觉，也没有发热畏寒的症状，同时没有发现血尿。我想请问您对我的症状有何看法，并且是否可以给我一些建议或治疗方案？",
+      "gold": [
+        "前列腺特异抗原（PSA）",
+        "泌尿系统B超检查",
+        "尿常规"
+      ],
+      "prediction": "Diagnosis confirmed based on the outlined evaluation process.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": false,
+      "seconds": 1145.6,
+      "error": null
+    },
+    {
+      "id": "403",
+      "question": "患者：医生您好，我是一名77岁的男性患者。最近我出现了进行性排尿困难、尿频和尿急的症状。我之前尝试了药物治疗，效果还可以。最近进行了一次PSA复查，结果没有异常。目前我能够正常排尿，但夜间还是会起来1-2次小便。我目前口服药物，症状有所改善。我想请问医生，接下来的治疗方案是什么呢？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Differentiation process is reasonable. Final diagnosis depends on specific findings from PSA/DRE, cystoscopy/uroflowmetry, urethrogram, and neurological evaluation as outlined.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 1070.9,
+      "error": null
+    },
+    {
+      "id": "406",
+      "question": "患者：医生您好，我是一名77岁的男性患者。最近我发现自己尿急的情况越来越严重，而且很难憋住。我之前做了一次PSA检查，结果是正常的。我想请问您对我的症状有什么治疗方案吗？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Final prioritization depends on: PSA trends, surgical history, urethral trauma/UTI history, neurological status, and cystoscopy/urodynamic findings.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 495.1,
+      "error": null
+    },
+    {
+      "id": "423",
+      "question": "医生，您好。我是一名65岁的男性患者，最近进行了一次肾脏输尿管膀胱B超，结果显示：前列腺、膀胱残余尿量测定双肾损害图像 双肾多发囊肿伴囊壁钙化 双肾结晶 右肾盂分离；右侧输尿管上段扩张，中下段显示不清；膀胱内壁毛糙；前列腺增大伴钙化；残余尿阳性；左侧输尿管未见明显异常。我很担心这些情况会对我的健康造成影响，想请问您有什么治疗方案可以帮助我解决这些问题吗？谢谢。",
+      "gold": [
+        "前列腺增生",
+        "尿潴留引起的双肾积水"
+      ],
+      "prediction": "Right ureteral obstruction (likely calculus) with secondary hydronephrosis and prostatic enlargement",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 346.9,
+      "error": null
+    },
+    {
+      "id": "425",
+      "question": "患者：医生您好，我是一名59岁的男性患者。最近我突然出现了尿频、尿急和尿痛的症状，但我没有接受任何特殊治疗。我想请问您对我的情况有什么治疗建议吗？",
+      "gold": [
+        "前列腺增生"
+      ],
+      "prediction": "Final diagnosis depends on test results (e.g., urinalysis, imaging, cystoscopy) and treatment response, as the differential process appropriately evaluates each condition with disease-specific diagnostic criteria.",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 67.9,
+      "error": null
+    },
+    {
+      "id": "432",
+      "question": "患者：医生您好，我是一名25岁的女性患者。最近两周我一直出现尿频、尿急和尿痛的症状，反复发作。我很担心这个问题，想请问您有什么治疗方案可以帮助我缓解这些症状吗？",
+      "gold": [
+        "泌尿道感染"
+      ],
+      "prediction": "urinary tract infection",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 905.8,
+      "error": null
+    },
+    {
+      "id": "434",
+      "question": "患者：医生您好，我是一名60岁的男性患者。最近我做了一次检查，发现我的PSA值升高了，达到了6.05。我对此有些担忧，想请问您对我的治疗方案有什么建议？",
+      "gold": [
+        "前列腺肿瘤的特殊筛查"
+      ],
+      "prediction": "Prostate-specific antigen (PSA) elevation requiring further evaluation",
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "kb_covered": true,
+      "seconds": 19.3,
+      "error": null
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 from har.knowledge import standardized_note
 from har.nodes.dda import dda_differentiate, dda_reflect, dda_retrieve
-from har.nodes.ica import ica_analysis_and_summarize, ica_extract
+from har.nodes.ica import ica_summarize, ica_extract
 from har.nodes.pda import pda_diagnose
 
 from .conftest import FakeLLM
@@ -33,7 +33,7 @@ def test_agent_outputs_merge_to_the_standardized_note_shape(monkeypatch):
     )
     state = {"question": "patient question"}
     state.update(ica_extract(state))
-    state.update(ica_analysis_and_summarize(state))
+    state.update(ica_summarize(state))
 
     monkeypatch.setattr(
         "har.nodes.pda.get_llm",

@@ -6,7 +6,7 @@ clinical features. Both call the configured LLM directly with no
 LLM-independent contract to stub, so these run live against the real model
 and are skipped if no endpoint is configured (see conftest.requires_llm).
 """
-from har.nodes.ica import ica_extract, ica_analysis_and_summarize
+from har.nodes.ica import ica_extract, ica_summarize
 
 from .conftest import PATIENT_QUESTION, requires_llm
 
@@ -41,7 +41,7 @@ def test_ica_summarize_itemizes_clinical_features():
             "2.1/HPF most recently."
         ),
     }
-    result = ica_analysis_and_summarize(state)
+    result = ica_summarize(state)
 
     assert result.keys() == {"clinical_features"}
     features = result["clinical_features"]

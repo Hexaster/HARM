@@ -51,7 +51,7 @@ def ica_extract(state):
             "auxiliary_examination": auxiliary_examination,
         }
 
-def ica_analysis_and_summarize(state):
+def ica_summarize(state):
     msg = prompts.ANALYSIS_AND_SUMMARIZE_PROMPT.format(
         medical_history=state["medical_history"],
         physical_examination=state["physical_examination"],
